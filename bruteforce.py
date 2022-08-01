@@ -14,7 +14,7 @@ import os
 base_url = os.environ['BASE_URL']
 new_pass = os.environ['NEW_PASSWORD']
 sem_pool = 20
-possible_answers = os.environ['POSSIBLE_ANSWER'].split()
+possible_answers = os.environ['POSSIBLE_ANSWERS'].split()
 leet = {'o': '0', 'i': '1', 'z': '2', 'e': '3', 'a': '4', 's': '5', 'g': '6', 't': '7', 'b': '8', 'l': '1'}
 
 
