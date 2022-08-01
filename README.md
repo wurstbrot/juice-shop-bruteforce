@@ -1,7 +1,7 @@
 # Usage
 
 ```
-docker run -e POSSIBLE_ANSWER=snuffles -e NEW_PASSWORD=secret -e BASE_URL=http://localhost:3000 --network="host" wurstbrot/juice-shop-bruteforce
+docker run -e POSSIBLE_ANSWERS="snuffles snow" -e NEW_PASSWORD=secret -e BASE_URL=http://localhost:3000 --network="host" wurstbrot/juice-shop-bruteforce
 
 ```
 

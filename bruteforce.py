@@ -14,6 +14,7 @@ import os
 base_url = os.environ['BASE_URL']
 new_pass = os.environ['NEW_PASSWORD']
 sem_pool = 20
+possible_answers = os.environ['POSSIBLE_ANSWER'].split()
 leet = {'o': '0', 'i': '1', 'z': '2', 'e': '3', 'a': '4', 's': '5', 'g': '6', 't': '7', 'b': '8', 'l': '1'}
 
 
@@ -55,8 +56,9 @@ async def run():
     done = asyncio.Event()
     tasks = []
     async with aiohttp.ClientSession() as session:
-        for leet_case_tuple in leet_case_combos(os.environ['POSSIBLE_ANSWER']):
-            tasks.append(asyncio.create_task(bound_fetch(sem=sem, session=session, answer=''.join(leet_case_tuple), done=done)))
+        for word in possible_answers:
+            for leet_case_tuple in leet_case_combos(word):
+                tasks.append(asyncio.create_task(bound_fetch(sem=sem, session=session, answer=''.join(leet_case_tuple), done=done)))
         print('Total answers to check: %d' % len(tasks))
         await done.wait()
         for task in tasks:
